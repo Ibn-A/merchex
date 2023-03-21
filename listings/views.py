@@ -22,4 +22,4 @@ def listings(request):
     """)
 
 def contact(request):
-    return HttpResponse('<h1>Et si nous gardions le contact !</h1>')
+    return render(request, 'listings/contact.html')
