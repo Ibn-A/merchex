@@ -9,7 +9,7 @@ def hello(request):
     return render(request, 'listings/hello.html', {'bands': bands})
 
 def about(request):
-    return HttpResponse('<h1> A propos </h1> <p>Nous adorons merchex</p>')
+    return render(request, 'listings/about.html')
 
 def listings(request):
     listings = Listing.objects.all()
