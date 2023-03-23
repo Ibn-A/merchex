@@ -20,7 +20,7 @@ class Band(models.Model):
     
     def __str__(self):
         return f'{self.name}'
-        
+
 class Listing(models.Model):
 
     class Types(models.TextChoices):
@@ -37,3 +37,6 @@ class Listing(models.Model):
         validators=[MinValueValidator(2023), MaxValueValidator(2035)]
     )
     type = models.fields.CharField(default = 'R', choices=Types.choices, max_length=50)
+
+    def __str__(self):
+        return f'{self.title}'
