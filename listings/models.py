@@ -19,4 +19,18 @@ class Band(models.Model):
     official_homepage = models.fields.URLField(null=True, blank=True)
     
 class Listing(models.Model):
-    title = models.fields.CharField(max_length=100)
+
+    class Types(models.TextChoices):
+        Records = 'R'
+        Clothes = 'C'
+        Posters = 'P'
+        Miscellaneous = 'M'
+
+    title = models.fields.CharField(default='', max_length=100)
+    description = models.fields.CharField(default='', max_length=1000)
+    sold = models.fields.BooleanField(default=False)
+    year = models.fields.IntegerField(
+        default = 2023,
+        validators=[MinValueValidator(2023), MaxValueValidator(2035)]
+    )
+    type = models.fields.CharField(default = 'R', choices=Types.choices, max_length=50)
