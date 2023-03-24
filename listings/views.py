@@ -8,6 +8,12 @@ def band_list(request):
     bands = Band.objects.all()
     return render(request, 'listings/band_list.html', {'bands': bands})
 
+def band_detail(request, id):
+    band = Band.objects.get(id=id) # pour obtenir le band avec cet id
+    return render(request,
+            'listings/band_detail.html',
+            {'band': band}) # pour passer le groupe(band)au gabarit
+
 def about(request):
     return render(request, 'listings/about.html')
 
