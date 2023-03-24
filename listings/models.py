@@ -37,6 +37,6 @@ class Listing(models.Model):
         validators=[MinValueValidator(2023), MaxValueValidator(2035)]
     )
     type = models.fields.CharField(default = 'R', choices=Types.choices, max_length=50)
-
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
     def __str__(self):
         return f'{self.title}'
