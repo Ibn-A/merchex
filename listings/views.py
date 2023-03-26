@@ -1,8 +1,13 @@
+from django.core.mail import send_mail
+
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 from listings.models import Band
 from listings.models import Listing
+
+from listings.forms import ContactUsForm
 
 def band_list(request):
     bands = Band.objects.all()
@@ -28,4 +33,25 @@ def ad_detail(request, id):
         {'ad': ad})
 
 def contact(request):
-    return render(request, 'listings/contact.html')
+    if request.method == 'POST':
+        # créer un instance de notre formulaire et le remplir avec les données POST.
+        form = ContactUsForm(request.POST)
+
+        if form.is_valid():
+            send_mail(
+                subject=f'Message from {form.cleaned_data["name"] or "anonyme"} via Merchex Contact Us Form',
+                message = form.cleaned_data['message'],
+                from_email = form.cleaned_data['email'],
+                recipient_list=['admin@merchex.xyz'],
+            )
+            return redirect('email-sent')
+    else:
+        # ceci doit être une requête GET, donc crée un formulaire vide.
+        form = ContactUsForm()
+
+    return render(request,
+        'listings/contact.html',
+        {'form':form})
+
+def email_sent(request):
+    return render(request, 'listings/email-sent.html')

@@ -24,5 +24,6 @@ urlpatterns = [
     path('about-us/', views.about),
     path('ads/', views.ad_list, name='ad-list'),
     path('ads/<int:id>/', views.ad_detail, name='ad-detail'),
-    path('contact-us/', views.contact)
+    path('contact-us/', views.contact, name='contact'),
+    path('email-sent/', views.email_sent, name='email-sent')
 ]
