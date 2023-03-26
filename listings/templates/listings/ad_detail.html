@@ -1,0 +1,14 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+    <h2>{{ad.title}}</h2>
+
+    <ul>
+        <li>Année : {{ad.year}}</li>
+        <li>vendue : {{ad.sold|yesno}}</li>
+        <li>Description : {{ad.description}}</li>
+    </ul>
+
+    <a href="{% url 'ad-list' %}">Retour au annonces</a>
+
+{% endblock%}

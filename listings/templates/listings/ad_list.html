@@ -5,7 +5,7 @@
     <h1> Liste des annonces</h1>
         <ul>
             {% for ad in ads %}
-                <li>{{ad.title}}</li>
+                <li><a href="{% url 'ad-detail' ad.id %}">{{ad.title}}</a></li>
             {% endfor %}
         </ul>
 
