@@ -11,4 +11,5 @@ class ContactUsForm(forms.Form):
 class BandForm(forms.ModelForm):
     class Meta:
         model = Band
-        fields = '__all__'
+        exclude = ('active', 'official_homepage') # exclue ces deux champs du formulaire généré
+       # fields = '__all__'
