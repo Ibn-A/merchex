@@ -8,6 +8,10 @@
         {% for band in bands %}
         <li><a href="{% url 'band-detail' band.id %}">{{ band.name}}</a></li>
         {% endfor %}
+        
+        <p>
+            <a href="{% url 'band-create' %}">Créer un nouveau Band</a>
+        </p>
     </ul>
 
 {% endblock %}
