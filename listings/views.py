@@ -19,6 +19,9 @@ def band_detail(request, id):
             'listings/band_detail.html',
             {'band': band}) # pour passer le groupe(band)au gabarit
 
+def band_create(request):
+    return render(request, 'listings/band_create.html')
+
 def about(request):
     return render(request, 'listings/about.html')
 
