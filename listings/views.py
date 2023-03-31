@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from listings.models import Band
 from listings.models import Listing
 
-from listings.forms import ContactUsForm
+from listings.forms import BandForm, ContactUsForm
 
 def band_list(request):
     bands = Band.objects.all()
@@ -20,7 +20,10 @@ def band_detail(request, id):
             {'band': band}) # pour passer le groupe(band)au gabarit
 
 def band_create(request):
-    return render(request, 'listings/band_create.html')
+    form = BandForm()
+    return render(request, 
+            'listings/band_create.html',
+            {'form': form})
 
 def about(request):
     return render(request, 'listings/about.html')
