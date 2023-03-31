@@ -20,7 +20,18 @@ def band_detail(request, id):
             {'band': band}) # pour passer le groupe(band)au gabarit
 
 def band_create(request):
-    form = BandForm()
+    if request.method == 'POST':
+        # on crée une instance du formulaire qu'on rempli avec les données POST
+        form = BandForm(request.POST)
+
+        if form.is_valid():
+            # creer un nouveau groupe et sauvegarde dans la bdd
+            # redirection vers page de détail du groupe nouvellement crée
+            band = form.save()
+            return redirect('band-detail', band.id)
+    else : 
+        form = BandForm()
+
     return render(request, 
             'listings/band_create.html',
             {'form': form})
