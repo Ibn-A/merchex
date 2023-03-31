@@ -49,6 +49,11 @@ def ad_detail(request, id):
         'listings/ad_detail.html',
         {'ad': ad})
 
+def ad_create(request):
+    return render(request,
+        'listings/ad_create.html'
+        )
+
 def contact(request):
     if request.method == 'POST':
         # créer un instance de notre formulaire et le remplir avec les données POST.
