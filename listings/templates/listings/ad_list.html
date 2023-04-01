@@ -7,6 +7,10 @@
             {% for ad in ads %}
                 <li><a href="{% url 'ad-detail' ad.id %}">{{ad.title}}</a></li>
             {% endfor %}
+            <p>
+                <a href="{% url 'ad-create' %}"> Nouvelle annonces </a>
+            </p>
+               
         </ul>
 
 {% endblock %}

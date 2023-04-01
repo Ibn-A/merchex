@@ -3,4 +3,10 @@
 {% block content%}
 
     <h1>Crée une nouvelle annonce</h1>
+
+    <form action="" method="POST" novalidate>
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <input type="submit" value="Créer"/>
+    </form>
 {% endblock %}

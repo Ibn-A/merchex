@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from listings.models import Band
 from listings.models import Listing
 
-from listings.forms import BandForm, ContactUsForm
+from listings.forms import ListingForm, BandForm, ContactUsForm
 
 def band_list(request):
     bands = Band.objects.all()
@@ -50,9 +50,11 @@ def ad_detail(request, id):
         {'ad': ad})
 
 def ad_create(request):
+    if request.metod == 'POST':
+    form = ListingForm()
     return render(request,
-        'listings/ad_create.html'
-        )
+        'listings/ad_create.html',
+        {'form': form})
 
 def contact(request):
     if request.method == 'POST':
