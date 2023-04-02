@@ -50,8 +50,15 @@ def ad_detail(request, id):
         {'ad': ad})
 
 def ad_create(request):
-    if request.metod == 'POST':
-    form = ListingForm()
+    if request.method == 'POST':
+        form = ListingForm(request.POST)
+
+        if form.is_valid():
+            ad = form.save()
+            return redirect('ad-detail', ad.id)
+    else :
+        form = ListingForm()
+        
     return render(request,
         'listings/ad_create.html',
         {'form': form})
