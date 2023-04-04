@@ -36,6 +36,14 @@ def band_create(request):
             'listings/band_create.html',
             {'form': form})
 
+def band_update(request, id):
+    band = Band.objects.get(id=id)
+    form = BandForm(instance=band) # on pré-rempli le formulaire avec les données du groupe existant.
+
+    return render(request, 
+        'listings/band_update.html',
+        {'form':form})
+
 def about(request):
     return render(request, 'listings/about.html')
 
