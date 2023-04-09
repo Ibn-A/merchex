@@ -80,6 +80,9 @@ def ad_create(request):
         'listings/ad_create.html',
         {'form': form})
 
+def ad_update(request, id):
+    return render(request, 'listings/ad_update.html')
+
 def contact(request):
     if request.method == 'POST':
         # créer un instance de notre formulaire et le remplir avec les données POST.
