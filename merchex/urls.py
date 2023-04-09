@@ -23,6 +23,7 @@ urlpatterns = [
     path('bands/<int:id>/', views.band_detail, name='band-detail'),
     path('bands/add', views.band_create, name='band-create'),
     path('bands/<int:id>/update', views.band_update, name='band-update'),
+    path('bands/<int:id>/delete', views.band_delete, name='band-delete'),
     path('about-us/', views.about),
     path('ads/', views.ad_list, name='ad-list'),
     path('ads/<int:id>/', views.ad_detail, name='ad-detail'),
