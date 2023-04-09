@@ -8,6 +8,7 @@
                 <li>
                     <a href="{% url 'ad-detail' ad.id %}">{{ad.title}}</a>
                     - <a href="{% url 'ad-update' ad.id %}">[modifier]</a>
+                    - <a href="{% url 'ad-delete' ad.id %}">[Supprimer]</a>
                 </li>
                 
             {% endfor %}

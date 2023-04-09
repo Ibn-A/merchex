@@ -112,6 +112,12 @@ def ad_update(request, id):
 
 def ad_delete(request, id):
     ad = Listing.objects.get(id=id)
+    if request.method == 'POST':
+        # supprimer l'annonce de la bdd
+        ad.delete()
+        #rediriger vers la liste des annonces 
+        return redirect('ad-list')
+        
     return render(request,
             'listings/ad_delete.html',
             {'ad':ad})
