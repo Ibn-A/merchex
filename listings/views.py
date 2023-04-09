@@ -110,6 +110,11 @@ def ad_update(request, id):
             'listings/ad_update.html',
             {'form': form})
 
+def ad_delete(request, id):
+    ad = Listing.objects.get(id=id)
+    return render(request,
+            'listings/ad_delete.html',
+            {'ad':ad})
 def contact(request):
     if request.method == 'POST':
         # créer un instance de notre formulaire et le remplir avec les données POST.
