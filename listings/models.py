@@ -12,8 +12,8 @@ class Band(models.Model):
     genre = models.fields.CharField(default = 'HH', choices=Genre.choices, max_length=50)
     biography = models.fields.CharField(null=True, max_length=1000)
     year_formed = models.fields.IntegerField(
-        default = 2000,
-        validators=[MinValueValidator(1900),MaxValueValidator(2023)]
+        default = 2023,
+        validators=[MinValueValidator(1900),MaxValueValidator(2035)]
     )
     active = models.fields.BooleanField(default=True)
     official_homepage = models.fields.URLField(null=True, blank=True)
@@ -34,7 +34,7 @@ class Listing(models.Model):
     sold = models.fields.BooleanField(default=False)
     year = models.fields.IntegerField(
         default = 2023,
-        validators=[MinValueValidator(2023), MaxValueValidator(2035)]
+        validators=[MinValueValidator(1900), MaxValueValidator(2035)]
     )
     type = models.fields.CharField(default = 'R', choices=Types.choices, max_length=50)
     band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
