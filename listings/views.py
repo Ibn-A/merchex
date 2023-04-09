@@ -55,6 +55,13 @@ def band_update(request, id):
 
 def band_delete(request, id):
     band = Band.objects.get(id=id)
+
+    if request.method == 'POST':
+        # supprimer le groupe de la bdd
+        band.delete()
+        # rediriger vers la liste des groupes
+        return redirect('band-list')
+    # pas besoin de "else" ici. Si c'est une demande get, continuez simplement.
     return render(request,
              'listings/band_delete.html',
              {'band':band})
