@@ -9,6 +9,7 @@
         <li>Description : {{ad.description}}</li>
     </ul>
 
+    <a href="{% url 'ad-update' ad.id %}">[Modifier]</a>
     <a href="{% url 'ad-list' %}">Retour au annonces</a>
 
 {% endblock%}

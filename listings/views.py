@@ -81,7 +81,21 @@ def ad_create(request):
         {'form': form})
 
 def ad_update(request, id):
-    return render(request, 'listings/ad_update.html')
+    ad = Listing.objects.get(id=id)
+    if request.method == 'POST':
+        form = ListingForm(request.POST, instance=ad)
+        if form.is_valid():
+            # on sauvegarde l'annonce dans la BDD
+            form.save()
+            # et on redirige vers la page détaillé de l'annonce modifié
+            return redirect('ad-detail', ad.id)
+    else :
+        
+        form = ListingForm(instance = ad)
+
+    return render(request, 
+            'listings/ad_update.html',
+            {'form': form})
 
 def contact(request):
     if request.method == 'POST':
